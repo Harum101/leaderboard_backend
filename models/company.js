@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
 
 const Schema = mongoose.Schema;
 
@@ -18,10 +17,6 @@ const CompanySchema = new Schema({
     default: false,
   },
 });
-
-CompanySchema.methods.matchPassword = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
-};
 
 // CompanySchema.pre("save", async function (next) {
 //   if (!this.isModified("password")) {

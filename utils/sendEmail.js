@@ -1,11 +1,11 @@
 const nodemailer = require("nodemailer");
 
-module.exports = async (email, subject, text) => {
+module.exports = async (email, subject, html) => {
   try {
     const transport = nodemailer.createTransport({
       host: process.env.HOST,
       service: process.env.SERVICE,
-      post: Number(process.env.EMAIL_PORT),
+      port: Number(process.env.EMAIL_PORT),
       secure: Boolean(process.env.SECURE),
       auth: {
         user: process.env.USER,
@@ -17,10 +17,11 @@ module.exports = async (email, subject, text) => {
       from: process.env.USER,
       to: email,
       subject: subject,
-      text: text,
+      html: html,
     });
 
-    console.log("Email sent successfully");
+    return "An email has been sent to your account for verification. Please verify before login.";
+    
   } catch (error) {
     console.log("Error", error);
   }
