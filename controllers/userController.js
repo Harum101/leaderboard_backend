@@ -87,6 +87,16 @@ exports.updateUserSkills = [
             skill_level: req.body.skill_level,
             avatar_url: req.body.avatar_url,
             score: req.body.score,
+            rank:
+              req.body.score >= 140
+                ? "S"
+                : req.body.score >= 130
+                ? "A"
+                : req.body.score >= 120
+                ? "B"
+                : req.body.score >= 100
+                ? "C"
+                : "F",
           };
 
           UserSkill.findByIdAndUpdate(result._id, userSkll, function (err) {
@@ -104,6 +114,16 @@ exports.updateUserSkills = [
             skill_level: req.body.skill_level,
             avatar_url: req.body.avatar_url,
             score: req.body.score,
+            rank:
+              req.body.score >= 140
+                ? "S"
+                : req.body.score >= 130
+                ? "A"
+                : req.body.score >= 120
+                ? "B"
+                : req.body.score >= 100
+                ? "C"
+                : "F",
           });
           userSkill.save(function (err) {
             if (err) {

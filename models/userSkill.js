@@ -13,6 +13,7 @@ const UserSkillSchema = new Schema({
   },
   avatar_url: { type: String },
   score: { type: Number, required: true, default: 0 },
+  rank: {type: String},
 });
 
 module.exports = mongoose.model("UserSkill", UserSkillSchema);
