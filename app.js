@@ -38,6 +38,7 @@ app.use("/badges", indexRouter.badge);
 app.use("/skills", indexRouter.skill);
 app.use("/users", indexRouter.user);
 app.use("/authCom", indexRouter.authCom);
+app.use("/hackathon", indexRouter.hackathon);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
