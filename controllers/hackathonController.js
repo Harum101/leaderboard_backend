@@ -12,8 +12,13 @@ exports.getHackathon = async (req, res, next) => {
 
 exports.createHackathon = async (req, res, next) => {
   try {
-    const { hackathonDate } = req.body;
-    console.log(hackathonDate);
+    const {
+      hackathonTitle,
+      hackathonDate,
+      hackathonDescription,
+      targetAudience,
+      hackathonPrize,
+    } = req.body;
 
     // Validate the input date (you can add more validation)
     if (!hackathonDate || !Date.parse(hackathonDate)) {
@@ -23,10 +28,25 @@ exports.createHackathon = async (req, res, next) => {
     // Create or update the hackathon document in the database
     const existingHackathon = await Hackathon.findOne({});
     if (existingHackathon) {
-      existingHackathon.hackathonDate = hackathonDate;
-      await existingHackathon.save();
+      // existingHackathon.hackathonDate = hackathonDate;
+      // await existingHackathon.save();
+      await existingHackathon.remove();
+      const newHackathon = new Hackathon({
+        hackathonTitle,
+        hackathonDescription,
+        targetAudience,
+        hackathonDate,
+        hackathonPrize,
+      });
+      await newHackathon.save();
     } else {
-      const newHackathon = new Hackathon({ hackathonDate });
+      const newHackathon = new Hackathon({
+        hackathonTitle,
+        hackathonDescription,
+        targetAudience,
+        hackathonDate,
+        hackathonPrize,
+      });
       await newHackathon.save();
     }
 
