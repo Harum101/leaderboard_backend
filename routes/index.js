@@ -3,6 +3,7 @@ const skill = require("./skill");
 const user = require("./user");
 const authCom = require("./authCom");
 const hackathon = require("./hackathon");
+const achievements = require('./achievements')
 
 module.exports = {
   badge,
@@ -10,4 +11,5 @@ module.exports = {
   user,
   authCom,
   hackathon,
+  achievements
 };

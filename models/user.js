@@ -10,7 +10,20 @@ const UserSchema = new Schema({
   years_of_experience: { type: Number, default: 0 },
   availability: { type: String },
   badge: [{ type: mongoose.Schema.Types.ObjectId, ref: "Badge" }],
-  // skills: [{ type: mongoose.Schema.Types.ObjectId, ref: "UserSkill" }],
+  achievements: [
+    {
+      mainTitle: {
+        type: String,
+      },
+      subparts: [
+        {
+          subTitle: {
+            type: String,
+          },
+        },
+      ],
+    },
+  ],
 });
 
 module.exports = mongoose.model("User", UserSchema);
